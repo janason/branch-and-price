@@ -6,29 +6,22 @@ instance data, experiment launchers, configurations, and the recorded results.
 The repository root corresponds to the local `Release` directory; no compilation
 is needed to use the supplied executable.
 
-## Runtime environment
+## System requirements
 
-The recorded experiments used the following environment:
-
-| Component | Specification |
+| Component | Requirement |
 |---|---|
-| Operating system | Windows Server 2022, 64-bit |
-| Processor | Intel Xeon Platinum, 2.50 GHz |
-| Memory | 32 GB RAM |
-| Implementation | C++ |
-| B&P solver | SCIP 10.0.0 |
-| MIP solver | IBM ILOG CPLEX 22.1.0 |
-| Microsoft C++ runtime | Bundled x64 runtime, version 14.44.35211.0 |
-| Run settings | One solver thread, random seed 2026, 600-second solver limit |
+| Processor | An x86-64 processor compatible with the supplied Windows binaries. |
+| Operating system | 64-bit Windows compatible with the bundled runtime libraries. |
+| Memory | Sufficient available RAM for the selected instances and concurrent solver processes. Memory demand depends on the instance and search size; a fixed minimum has not been established. |
+| Disk space | Space for the complete bundle and generated results and logs, with write permission in the experiment directory. |
+| Command shell | Windows Command Prompt for batch files; the command-line executable can also be launched from PowerShell. |
+| Runtime libraries | The matching x64 solver and Microsoft Visual C++ runtime DLLs supplied with the bundle. Keep all DLLs beside `pslp_bp.exe`. |
+| Solver license | An applicable CPLEX license for new optimization runs that use CPLEX. |
 
-The hardware specifications describe the experimental machine, not measured
-minimum system requirements. The supplied executable targets Windows x64 and
-can be launched from Command Prompt or PowerShell. No compiler or Python
-installation is required to run the supplied bundle.
-
-Keep all supplied DLLs beside `pslp_bp.exe`. New optimization runs require the
-solver runtimes and the applicable CPLEX license. Third-party components remain
-subject to their respective license terms.
+The bundle includes SCIP 10.0.0 and CPLEX 22.1.0 runtime libraries. A C++
+compiler and Python are not required to run the supplied executable. Third-party
+components remain subject to their respective license terms. Reduce the number
+of concurrent solver processes if available memory is limited.
 
 ## Quick start
 
@@ -121,7 +114,8 @@ Sensitivity summaries are named `summary_sensitivity-05.json`,
 `summary_sensitivity10.json`, and `summary_sensitivity20.json` in their respective
 directories.
 
-All configurations enable `resume: true` and `isolate_runs: true`. The reported solver time
+All configurations use a **600-second solver limit**, one solver thread, random
+seed 2026, `resume: true`, and `isolate_runs: true`. The reported solver time
 excludes common initial-solution construction and is not the total batch time.
 Concurrent batches use a global limit of two isolated solver child processes;
 additional work waits for a slot.
