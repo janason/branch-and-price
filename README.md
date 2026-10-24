@@ -6,6 +6,30 @@ instance data, experiment launchers, configurations, and the recorded results.
 The repository root corresponds to the local `Release` directory; no compilation
 is needed to use the supplied executable.
 
+## Runtime environment
+
+The recorded experiments used the following environment:
+
+| Component | Specification |
+|---|---|
+| Operating system | Windows Server 2022, 64-bit |
+| Processor | Intel Xeon Platinum, 2.50 GHz |
+| Memory | 32 GB RAM |
+| Implementation | C++ |
+| B&P solver | SCIP 10.0.0 |
+| MIP solver | IBM ILOG CPLEX 22.1.0 |
+| Microsoft C++ runtime | Bundled x64 runtime, version 14.44.35211.0 |
+| Run settings | One solver thread, random seed 2026, 600-second solver limit |
+
+The hardware specifications describe the experimental machine, not measured
+minimum system requirements. The supplied executable targets Windows x64 and
+can be launched from Command Prompt or PowerShell. No compiler or Python
+installation is required to run the supplied bundle.
+
+Keep all supplied DLLs beside `pslp_bp.exe`. New optimization runs require the
+solver runtimes and the applicable CPLEX license. Third-party components remain
+subject to their respective license terms.
+
 ## Quick start
 
 1. Clone this repository or download and extract its ZIP archive.
@@ -31,8 +55,6 @@ records may be computed when an ordinary experiment is launched.
 
 Use a named configuration or a batch file. Double-clicking `pslp_bp.exe` without
 arguments does not select an experiment; no default `algo_config.json` is supplied.
-New optimization runs require the solver runtimes and the applicable CPLEX license.
-Third-party components remain subject to their respective license terms.
 
 ## Directory and file guide
 
@@ -99,8 +121,7 @@ Sensitivity summaries are named `summary_sensitivity-05.json`,
 `summary_sensitivity10.json`, and `summary_sensitivity20.json` in their respective
 directories.
 
-All configurations use a **600-second solver limit**, one solver thread, random
-seed 2026, `resume: true`, and `isolate_runs: true`. The reported solver time
+All configurations enable `resume: true` and `isolate_runs: true`. The reported solver time
 excludes common initial-solution construction and is not the total batch time.
 Concurrent batches use a global limit of two isolated solver child processes;
 additional work waits for a slot.
