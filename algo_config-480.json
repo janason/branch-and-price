@@ -1,0 +1,21 @@
+{
+  "experiment_name": "n480",
+  "input": "instances/instances_480.txt",
+  "output": "results/n480/",
+  "algorithms": [
+    "mip",
+    "standard",
+    "enhanced",
+    "without-labeling",
+    "without-primal-package"
+  ],
+  "resume": true,
+  "isolate_runs": true,
+  "summary_file": "summary_n480.json",
+  "max_cases": 0,
+  "time_limit": 600,
+  "threads": 1,
+  "seed": 2026,
+  "transform_conflicts": false,
+  "resume_reference": "results/summary_comp.json"
+}

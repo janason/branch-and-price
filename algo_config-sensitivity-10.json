@@ -1,0 +1,20 @@
+{
+  "experiment_name": "sensitivity",
+  "input": "instances/oelschlagel/",
+  "output": "results/s10/",
+  "algorithms": [
+    "enhanced"
+  ],
+  "budget_slacks": [
+    0.1
+  ],
+  "resume": true,
+  "isolate_runs": true,
+  "summary_file": "summary_sensitivity10.json",
+  "max_cases": 0,
+  "time_limit": 600,
+  "threads": 1,
+  "seed": 2026,
+  "transform_conflicts": false,
+  "resume_reference": "results/summary_sens.json"
+}
