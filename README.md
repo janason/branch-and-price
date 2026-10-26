@@ -1,10 +1,9 @@
-# Branch-and-price experiments for the parallel stack loading problem
+# Branch-and-price application for the parallel stack loading problem
 
 This repository contains a prebuilt **Windows x64 experiment bundle** for the
 parallel stack loading problem (PSLP). It includes the executable, runtime DLLs,
 instance data, experiment launchers, configurations, and the recorded results.
-The repository root corresponds to the local `Release` directory; no compilation
-is needed to use the supplied executable.
+No compilation is needed to use the supplied executable.
 
 ## System requirements
 
